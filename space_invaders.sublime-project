@@ -1,0 +1,28 @@
+{
+	"build_systems":
+	[
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "space_invaders Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"/Users/danprogramador/Python/Environments/space_invaders_env/bin/python\" -u \"$file\""
+		},
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"/Users/danprogramador/Python/Environments/space_invaders_env/bin/python\" -u \"$file\""
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"python_interpreter": "/Users/danprogramador/Python/Environments/space_invaders_env/bin/python"
+	},
+	"virtualenv": "/Users/danprogramador/Python/Environments/space_invaders_env"
+}
