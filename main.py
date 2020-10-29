@@ -14,6 +14,9 @@ screen_width = 800
 #Create the screen
 screen = pygame.display.set_mode((screen_width, screen_height))
 
+#Background Image
+background = pygame.image.load('background.png')
+
 #Caption and Icon
 pygame.display.set_caption("Space Invaders")
 icon = pygame.image.load('ufo_32.png')
@@ -23,14 +26,14 @@ pygame.display.set_icon(icon)
 playerImg = pygame.image.load('battleship.png')
 playerX = 370
 playerY = 480
-player_speed = 10
+player_speed = 15
 playerX_change = 0
 
 #Enemy
 enemyImg = pygame.image.load('ufo_64.png')
 enemyX = random.randint(0, screen_width)
 enemyY = random.randint(50, 150)
-enemy_X_speed = 7
+enemy_X_speed = 12
 enemy_Y_speed = 40
 enemyX_change = enemy_X_speed
 enemyY_change = enemy_Y_speed
@@ -47,6 +50,9 @@ while running:
 
     #RGB - Red, Green, Blue
     screen.fill((0, 0, 0))
+
+    #Drawing Background Image
+    screen.blit(background, (0,0))
 
     for event in pygame_event.get():
         if event.type == pygame.QUIT:
