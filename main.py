@@ -38,11 +38,24 @@ enemy_Y_speed = 40
 enemyX_change = enemy_X_speed
 enemyY_change = enemy_Y_speed
 
+#Missile
+missileImg = pygame.image.load('missile.png')
+missileX = 0
+missileY = 480
+missileX_change = 0
+missileY_change = 10
+missile_state = "ready"
+
 def player(x, y):
     screen.blit(playerImg, (x, y))
 
 def enemy(x, y):
     screen.blit(enemyImg, (x, y))
+
+def fire_missile(x, y):
+    global missile_state
+    missile_state = "fire"
+    screen.blit(missileImg, (x + 16, y + 10))
 
 #Game Loop
 running = True
@@ -64,6 +77,8 @@ while running:
                 playerX_change = - player_speed
             if event.key == pygame.K_RIGHT:
                 playerX_change = player_speed
+            if event.key == pygame.K_SPACE:
+                fire_missile(playerX, missileY)
 
         # if the keystroke is released, stop moving
         if event.type == pygame.KEYUP:
@@ -87,6 +102,11 @@ while running:
     elif enemyX >= (screen_width - 64):  # 64 is the image width
         enemyX_change = -enemy_X_speed
         enemyY += enemyY_change
+
+    #Missile movement
+    if missile_state is "fire":
+        fire_missile(playerX, missileY)
+        missileY -= missileY_change
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
